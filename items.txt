@@ -1,0 +1,5 @@
+
+ 454 Lamp Value 0
+ 456 Coke Soda 1
+ 789 Mountain Dew 0
+ 101 Pepsi Soda 1
