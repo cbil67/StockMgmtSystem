@@ -11,6 +11,8 @@ public:
     text file. */
     void add_item();
     void display_item();
+
+    /* This function allows the user to check if a certain item exists in the text file. */
     void check_item();
     void update_item();
     void delete_item();
@@ -59,6 +61,7 @@ void dept:: add_item() {
     cin >> c_name;
     cout << "\n\n No. of Item: ";
     cin >> no_item;
+    /* Add the information that was obtained by user input into the file. */
     file.open("items.txt", ios::out | ios::app);
     file << " " << item_id << " " << itm_name << " "
         << c_name << " " << no_item << "\n";
@@ -66,6 +69,57 @@ void dept:: add_item() {
             "============================"
         << endl;
     file.close();
+}
+
+/* This function will help the user see a certain item on display from the 
+existing list of items within the text file. */
+void dept:: display_item() {
+    system("cls");
+    system("Color 0A");
+    fstream file; 
+
+    int item_no, item_id;
+    string itm_name, c_name;
+    file.open("items.txt", ios::in);
+    if(!file){
+        cout << "Error opening file." << endl;
+    } else {
+        cout << "----------------------------------------------"
+            "----------------------------\n";
+        cout << "Item Code            Item          "
+            "Company    No. of item\n";
+        cout << "----------------------------------------------"
+            "--------------"
+            << endl;
+        file >> item_id >> itm_name >> c_name
+            >> item_no;
+
+        while(!file.eof()){
+            cout << "   " << item_id << "           "
+                << itm_name << "        " << c_name
+                << "\t      " << item_no
+                << "\n";
+            file >> item_id >> itm_name >> c_name
+                >> item_no;
+        }
+        cout << ""
+                ""
+            << endl;
+        file.close();
+    }
+}
+
+void dept ::check_item(){
+    system("cls");
+    system("Color 0A");
+    fstream file;
+    int count = 0;
+    int itm_code, no_item;
+    string itm_name, c_name;
+    cout << "\n\n\t\t\t\t Check Specific Product\n";
+    cout << "----------------------------------------------"
+            "----------------------------\n";
+    file.open("items.txt", ios::in);
 }
 
 int main(){
